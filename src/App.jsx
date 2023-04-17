@@ -1,10 +1,27 @@
+import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import "./App.css";
+import data from "./data.json";
+import "./index.css";
+import styled, { css } from "styled-components";
+import GlobalStyle from "./GlobalStyles";
+import HeaderBox from "./pages/Header";
+import Planet from "./pages/Planet";
+import RenderPlanet from "./RenderPlanets";
+import Mercury from "./pages/mercury";
+import Mars from "./pages/Mars";
 
 function App() {
-  const [count, setCount] = useState(0);
+  return (
+    <>
+      <GlobalStyle />
+      <HeaderBox />
+      <Routes>
+        {/*<Route path="/" element={<HeaderBox />} />*/}
 
-  return <div className="App"></div>;
+        <Route path=":name" element={<RenderPlanet />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
