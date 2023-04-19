@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import data from "./data.json";
 import "./index.css";
@@ -17,8 +17,8 @@ function App() {
       <HeaderBox />
       <Routes>
         {/*<Route path="/" element={<HeaderBox />} />*/}
-
-        <Route path=":name" element={<RenderPlanet />} />
+        <Route path="/" element={<Navigate to="/mercury" />} />
+        <Route path="/:name" element={<RenderPlanet />} />
       </Routes>
     </>
   );
