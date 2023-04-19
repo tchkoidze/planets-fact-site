@@ -23,8 +23,57 @@ function Header() {
           </g>
         </svg>
       </MenuBurger>
+      <NavBar menuClick={menuClick}>
+        <PlanetList>
+          {data.map((e) => {
+            console.log(e.color);
+            return (
+              <PlanetListItem key={e.name}>
+                <div
+                  style={{ display: "flex", gap: "20px", alignItems: "center" }}
+                >
+                  <Circle backColor={e.color}></Circle>
+                  {/*<div
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    backgroundColor: e.color,
+                    borderRadius: "50%",
+                  }}
+                ></div>*/}
+                  <Link
+                    to={"/" + e.name}
+                    style={{
+                      textDecoration: "none",
+                      color: "#fff",
+                      fontFamily: "League Spartan",
+                      fontWeight: 700,
+                      fontSize: "15px",
+                      lineLeight: "25px",
+                      letterSpacing: "1.36364px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {e["name"]}{" "}
+                  </Link>
+                </div>
 
-      {menuClick ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="6" height="8">
+                  <path
+                    fill="none"
+                    stroke="#FFF"
+                    opacity=".4"
+                    d="M1 0l4 4-4 4"
+                  />
+                </svg>
+              </PlanetListItem>
+            );
+            //<li key={e["name"]}>{e["name"]}</li>
+          })}
+        </PlanetList>
+      </NavBar>
+
+      {/*{menuClick ? (
         <NavBar>
           <PlanetList>
             {data.map((e) => (
@@ -71,7 +120,7 @@ function Header() {
             ))}
           </PlanetList>
         </NavBar>
-      ) : null}
+      ) : null}*/}
     </HeaderBox>
   );
 }
@@ -103,11 +152,18 @@ const MenuBurger = styled.svg`
 
 const NavBar = styled.nav`
   flex-basis: 100%;
+  display: ${(props) => (props.menuClick ? "block" : "none")};
+  @media (min-width: 768px) {
+    display: block;
+  }
 `;
 
 const PlanetList = styled.ul`
   list-style: none;
   margin-top: 17px;
+  @media (min-width: 768px) {
+    display: flex;
+  }
 `;
 const PlanetListItem = styled.li`
   display: flex;
@@ -115,4 +171,12 @@ const PlanetListItem = styled.li`
   justify-content: space-between;
   padding: 20px 0;
   border-top: 1px solid rgb(255, 255, 255, 0.2);
+`;
+
+const Circle = styled.div`
+  width: 20px;
+  height: 20px;
+  //background-color: ${(props) => (props.backColor ? "block" : "none")};
+  background-color: red;
+  border-radius: 50%;
 `;
