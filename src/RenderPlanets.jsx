@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import data from "./data.json";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import InfoButtons from "./pages/InfoButtonsBox";
 
 function RenderPlanet() {
   const [characteristics, setCharacteristics] = useState("overview");
@@ -11,33 +12,36 @@ function RenderPlanet() {
 
   const showPlanet = data.filter((e) => e.name == name);
 
+  console.log(data);
+  console.log(showPlanet);
+
   return (
     //<div>{data.find((e) => e.name == name).name}</div>
     <PlanetInfoBox>
-      <InfoButtonsBox>
-        <OverviewBtn
-          onClick={() => setCharacteristics("overview")}
-          color={showPlanet[0]["color"]}
-          char={characteristics}
-        >
-          Overview
-        </OverviewBtn>
-        <StructureBtn
-          onClick={() => setCharacteristics("structure")}
-          color={showPlanet[0]["color"]}
-          char={characteristics}
-        >
-          Structure
-        </StructureBtn>
-        <Surface
-          onClick={() => setCharacteristics("geology")}
-          color={showPlanet[0]["color"]}
-          char={characteristics}
-        >
-          Surface
-        </Surface>
-      </InfoButtonsBox>
       <RenderdInfoBox>
+        <InfoButtonsBox>
+          <OverviewBtn
+            onClick={() => setCharacteristics("overview")}
+            color={showPlanet[0]["color"]}
+            char={characteristics}
+          >
+            Overview
+          </OverviewBtn>
+          <StructureBtn
+            onClick={() => setCharacteristics("structure")}
+            color={showPlanet[0]["color"]}
+            char={characteristics}
+          >
+            Structure
+          </StructureBtn>
+          <Surface
+            onClick={() => setCharacteristics("geology")}
+            color={showPlanet[0]["color"]}
+            char={characteristics}
+          >
+            Surface
+          </Surface>
+        </InfoButtonsBox>
         <PlanetImgBox>
           <PlanetImg
             src={
@@ -53,48 +57,55 @@ function RenderPlanet() {
           ) : null}
         </PlanetImgBox>
 
-        <PlanetInfoText>
-          <PlanetName>{showPlanet[0]["name"]}</PlanetName>
-          <CharacteristicText>
-            {showPlanet[0][characteristics]["content"]}
-          </CharacteristicText>
-          <Source>
-            Source :{" "}
-            <SourceLick
-              href={showPlanet[0][characteristics]["source"]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {" "}
-              Wikipedia{" "}
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
-                <path
-                  fill="#FFF"
-                  d="M11.34.66C10.9.22 10.37 0 9.75 0h-7.5C1.63 0 1.1.22.66.66.22 1.1 0 1.63 0 2.25v7.5c0 .62.22 1.15.66 1.59.44.44.97.66 1.59.66h7.5c.62 0 1.15-.22 1.59-.66.44-.44.66-.97.66-1.59v-7.5c0-.62-.22-1.15-.66-1.59zM10 6.25a.467.467 0 01-.305.46.544.544 0 01-.195.04.465.465 0 01-.352-.149L8.023 5.476 3.852 9.648a.481.481 0 01-.352.149.48.48 0 01-.352-.149l-.796-.797a.48.48 0 01-.149-.351.48.48 0 01.149-.352l4.172-4.172-1.125-1.125c-.162-.15-.198-.333-.11-.546A.467.467 0 015.75 2H9.5c.135 0 .253.05.352.148A.48.48 0 0110 2.5v3.75z"
-                  opacity=".5"
-                />
-              </svg>
-            </SourceLick>
-          </Source>
-        </PlanetInfoText>
+        <PlanetInfoTextContainer>
+          <PlanetInfoText>
+            <PlanetName>{showPlanet[0]["name"]}</PlanetName>
+            <CharacteristicText>
+              {showPlanet[0][characteristics]["content"]}
+            </CharacteristicText>
+            <Source>
+              Source :{" "}
+              <SourceLick
+                href={showPlanet[0][characteristics]["source"]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                Wikipedia{" "}
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+                  <path
+                    fill="#FFF"
+                    d="M11.34.66C10.9.22 10.37 0 9.75 0h-7.5C1.63 0 1.1.22.66.66.22 1.1 0 1.63 0 2.25v7.5c0 .62.22 1.15.66 1.59.44.44.97.66 1.59.66h7.5c.62 0 1.15-.22 1.59-.66.44-.44.66-.97.66-1.59v-7.5c0-.62-.22-1.15-.66-1.59zM10 6.25a.467.467 0 01-.305.46.544.544 0 01-.195.04.465.465 0 01-.352-.149L8.023 5.476 3.852 9.648a.481.481 0 01-.352.149.48.48 0 01-.352-.149l-.796-.797a.48.48 0 01-.149-.351.48.48 0 01.149-.352l4.172-4.172-1.125-1.125c-.162-.15-.198-.333-.11-.546A.467.467 0 015.75 2H9.5c.135 0 .253.05.352.148A.48.48 0 0110 2.5v3.75z"
+                    opacity=".5"
+                  />
+                </svg>
+              </SourceLick>
+            </Source>
+          </PlanetInfoText>
+          <InfoButtons
+            characteristics={characteristics}
+            setCharacteristics={setCharacteristics}
+            showPlanet={showPlanet}
+          />
+        </PlanetInfoTextContainer>
       </RenderdInfoBox>
 
       <Properties>
         <Rotation>
-          <span>ROTATION TIME</span>
-          <span>{showPlanet[0]["rotation"]}</span>
+          <PropertyName>ROTATION TIME</PropertyName>
+          <PropertySize>{showPlanet[0]["rotation"]}</PropertySize>
         </Rotation>
         <Revolution>
-          <span>REVOLUTION TIME</span>
-          <span>{showPlanet[0]["revolution"]}</span>
+          <PropertyName>REVOLUTION TIME</PropertyName>
+          <PropertySize>{showPlanet[0]["revolution"]}</PropertySize>
         </Revolution>
         <Radius>
-          <span>RADIUS</span>
-          <span>{showPlanet[0]["radius"]}</span>
+          <PropertyName>RADIUS</PropertyName>
+          <PropertySize>{showPlanet[0]["radius"]}</PropertySize>
         </Radius>
         <Temperature>
-          <span>AVERAGE TEMP.</span>
-          <span>{showPlanet[0]["temperature"]}</span>
+          <PropertyName>AVERAGE TEMP.</PropertyName>
+          <PropertySize>{showPlanet[0]["temperature"]}</PropertySize>
         </Temperature>
       </Properties>
     </PlanetInfoBox>
@@ -115,6 +126,9 @@ const InfoButtonsBox = styled.div`
   justify-content: space-between;
   padding: 0 24px;
   border-bottom: 1px solid rgb(255, 255, 255, 0.23);
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const OverviewBtn = styled.button(
@@ -178,8 +192,6 @@ const RenderdInfoBox = styled.div`
   flex-direction: column;
   -webkit-box-pack: justify;
   justify-content: space-between;
-
-  padding: 0 24px;
 `;
 
 const PlanetImgBox = styled.div`
@@ -202,8 +214,22 @@ const GeologyImg = styled.img`
   height: auto;
 `;
 
-const PlanetInfoText = styled.div`
+const PlanetInfoTextContainer = styled.div`
+  padding: 0 24px;
   margin: 98px 0 28px;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 69px;
+    padding: 0 39px;
+  }
+`;
+
+const PlanetInfoText = styled.div`
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
 
 const PlanetName = styled.h1`
@@ -214,18 +240,27 @@ const PlanetName = styled.h1`
   text-align: center;
   text-transform: uppercase;
   //margin: 65px 0 16px;
+  @media (min-width: 768px) {
+    text-align: left;
+    line-height: 62px;
+  }
 `;
 const CharacteristicText = styled.p`
   text-align: center;
-  font-family: "Spartan";
+  font-family: "League Spartan";
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
   line-height: 22px;
+  margin: 16px 0 32px;
+  @media (min-width: 768px) {
+    margin: 24px 0 32px;
+    text-align: left;
+  }
 `;
 const Source = styled.p`
   align-self: center;
-  font-family: "Spartan";
+  font-family: "League Spartan";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -237,7 +272,7 @@ const SourceLick = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-family: "Spartan";
+  font-family: "League Spartan";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -247,32 +282,89 @@ const SourceLick = styled.a`
 const Properties = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 1.4%;
   padding: 0 24px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: 0 39px;
+  }
 `;
 const Rotation = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
   padding: 9px 24px 13px 24px;
   border: 1px solid rgb(255, 255, 255, 0.2);
+  @media (min-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 24%;
+  }
 `;
+
+const PropertyName = styled.span`
+  font-family: "League Spartan";
+  font-weight: 700;
+  font-size: 8px;
+  line-height: 16px;
+  letter-spacing: 0.727273px;
+  text-transform: uppercase;
+
+  color: rgb(255, 255, 255, 0.5);
+  @media (min-width: 768px) {
+  }
+`;
+const PropertySize = styled.span`
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: right;
+  letter-spacing: -0.75px;
+  text-transform: uppercase;
+  @media (min-width: 768px) {
+    font-size: 24px;
+    line-height: 31px;
+  }
+`;
+
 const Revolution = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 9px 24px 13px 24px;
   border: 1px solid rgb(255, 255, 255, 0.2);
+  @media (min-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 24%;
+  }
 `;
 const Radius = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 9px 24px 13px 24px;
+
   border: 1px solid rgb(255, 255, 255, 0.2);
+  @media (min-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 24%;
+  }
 `;
 const Temperature = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 9px 24px 13px 24px;
+
   border: 1px solid rgb(255, 255, 255, 0.2);
+  @media (min-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 24%;
+  }
 `;
 
 //{props.showSelectedPlanet["images"]["planet"]}

@@ -32,7 +32,7 @@ ${(props) => props.fonts}
 }
 body{
     width: 100vw;
-    height: 100vh;
+    //height: 100vh;
     font-family: 'Antonio';
     color: var(--pWhite);
     background-color: var(--dark);

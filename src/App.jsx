@@ -16,8 +16,8 @@ function App() {
       <GlobalStyle />
       <HeaderBox />
       <Routes>
-        {/*<Route path="/" element={<HeaderBox />} />*/}
-        <Route path="/" element={<Navigate to="/mercury" />} />
+        {/*<Route path="/" element={<Navigate to="/Mercury" />} />*/}
+        <Route path="/" element={<Navigate to="/Mercury" />} />
         <Route path="/:name" element={<RenderPlanet />} />
       </Routes>
     </>
