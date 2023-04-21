@@ -230,6 +230,9 @@ const GeologyImg = styled.img`
   transform: translate(-50%, -50%);
   width: 80px;
   height: auto;
+  @media (min-width: 1440px) {
+    transform: translate(-50%, -70%);
+  }
 `;
 
 const PlanetInfoTextContainer = styled.div`
