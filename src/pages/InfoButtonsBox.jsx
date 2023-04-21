@@ -39,6 +39,9 @@ const InfoButtons = styled.div`
     flex-direction: column;
     gap: 16px;
   }
+  @media (min-width: 1440px) {
+    width: 63%;
+  }
 `;
 
 const OverviewBtn = styled.button(
@@ -62,6 +65,9 @@ const OverviewBtn = styled.button(
     &:hover {
       background-color: #d8d8d8;
     }
+    @media (min-width: 1440px) {
+      font-size: 12px;
+    }
   `
 );
 const StructureBtn = styled.button(
@@ -84,6 +90,9 @@ const StructureBtn = styled.button(
     &:hover {
       background-color: #d8d8d8;
     }
+    @media (min-width: 1440px) {
+      font-size: 12px;
+    }
   `
 );
 const Surface = styled.button(
@@ -105,6 +114,9 @@ const Surface = styled.button(
       props.char === "geology" ? props.color : "none"};
     &:hover {
       background-color: #d8d8d8;
+    }
+    @media (min-width: 1440px) {
+      font-size: 12px;
     }
   `
 );

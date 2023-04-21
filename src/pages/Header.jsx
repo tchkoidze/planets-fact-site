@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 
 function Header() {
   const [menuClick, setMenuClick] = useState(false);
+  const [backColor, setBackColor] = useState(null);
 
   let { name } = useParams();
 
@@ -28,7 +29,7 @@ function Header() {
           {data.map((e) => {
             console.log(e.color);
             return (
-              <PlanetListItem key={e.name}>
+              <PlanetListItem key={e.name} backColor={e.color}>
                 <div
                   style={{ display: "flex", gap: "20px", alignItems: "center" }}
                 >
@@ -58,14 +59,16 @@ function Header() {
                   </Link>
                 </div>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="6" height="8">
-                  <path
-                    fill="none"
-                    stroke="#FFF"
-                    opacity=".4"
-                    d="M1 0l4 4-4 4"
-                  />
-                </svg>
+                <ChevronIcon>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="6" height="8">
+                    <path
+                      fill="none"
+                      stroke="#FFF"
+                      opacity=".4"
+                      d="M1 0l4 4-4 4"
+                    />
+                  </svg>
+                </ChevronIcon>
               </PlanetListItem>
             );
             //<li key={e["name"]}>{e["name"]}</li>
@@ -134,6 +137,14 @@ const HeaderBox = styled.div`
   justify-content: space-between;
   padding: 16px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.23);
+  @media (min-width: 768px) {
+    padding: 32px 53px 27px 51px;
+    justify-content: center;
+  }
+  @media (min-width: 1440px) {
+    //padding: 32px 53px 27px 51px;
+    justify-content: space-between;
+  }
 `;
 
 const Logo = styled.p`
@@ -142,12 +153,18 @@ const Logo = styled.p`
   line-height: 36px;
   letter-spacing: -1.05px;
   text-transform: uppercase;
+  @media (min-width: 768px) {
+    align-self: center;
+  }
 `;
 
 const MenuBurger = styled.svg`
   width: 24px;
   height: 17px;
   cursor: pointer;
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavBar = styled.nav`
@@ -156,6 +173,9 @@ const NavBar = styled.nav`
   @media (min-width: 768px) {
     display: block;
   }
+  @media (min-width: 1440px) {
+    flex-basis: auto;
+  }
 `;
 
 const PlanetList = styled.ul`
@@ -163,6 +183,11 @@ const PlanetList = styled.ul`
   margin-top: 17px;
   @media (min-width: 768px) {
     display: flex;
+    justify-content: space-between;
+  }
+  @media (min-width: 1440px) {
+    gap: 33px;
+    margin: 0;
   }
 `;
 const PlanetListItem = styled.li`
@@ -171,12 +196,31 @@ const PlanetListItem = styled.li`
   justify-content: space-between;
   padding: 20px 0;
   border-top: 1px solid rgb(255, 255, 255, 0.2);
+  @media (min-width: 768px) {
+    border: none;
+  }
+  @media (min-width: 1440px) {
+    &:hover {
+      border-top: 2px solid ${(props) => props.backColor};
+      //background-color: #333;
+    }
+  }
 `;
 
 const Circle = styled.div`
   width: 20px;
   height: 20px;
-  //background-color: ${(props) => (props.backColor ? "block" : "none")};
-  background-color: red;
+  background-color: ${(props) => props.backColor};
   border-radius: 50%;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const ChevronIcon = styled.svg`
+  width: 6px;
+  height: 8px;
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;

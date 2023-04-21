@@ -119,6 +119,9 @@ const PlanetInfoBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 30px;
+  @media (min-width: 1440px) {
+    gap: 87px;
+  }
 `;
 
 const InfoButtonsBox = styled.div`
@@ -192,18 +195,33 @@ const RenderdInfoBox = styled.div`
   flex-direction: column;
   -webkit-box-pack: justify;
   justify-content: space-between;
+  @media (min-width: 768px) {
+    margin-top: 90px;
+  }
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    padding: 0 165px;
+  }
 `;
 
 const PlanetImgBox = styled.div`
   align-self: center;
   position: relative;
   width: 176px;
+  @media (min-width: 1440px) {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const PlanetImg = styled.img`
   align-self: center;
 
   width: 100%;
+  @media (min-width: 1440px) {
+    width: 50%;
+  }
 `;
 const GeologyImg = styled.img`
   position: absolute;
@@ -224,11 +242,22 @@ const PlanetInfoTextContainer = styled.div`
     gap: 69px;
     padding: 0 39px;
   }
+  @media (min-width: 1440px) {
+    width: 50%;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 39px;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const PlanetInfoText = styled.div`
   @media (min-width: 768px) {
     width: 50%;
+  }
+  @media (min-width: 1440px) {
+    width: 63%;
   }
 `;
 
@@ -244,6 +273,10 @@ const PlanetName = styled.h1`
     text-align: left;
     line-height: 62px;
   }
+  @media (min-width: 1440px) {
+    font-size: 80px;
+    line-height: 104px;
+  }
 `;
 const CharacteristicText = styled.p`
   text-align: center;
@@ -256,6 +289,11 @@ const CharacteristicText = styled.p`
   @media (min-width: 768px) {
     margin: 24px 0 32px;
     text-align: left;
+  }
+  @media (min-width: 1440px) {
+    font-size: 14px;
+    line-height: 25px;
+    margin: 23px 0 24px;
   }
 `;
 const Source = styled.p`
@@ -284,9 +322,17 @@ const Properties = styled.div`
   flex-direction: column;
   gap: 1.4%;
   padding: 0 24px;
+  margin-bottom: 47px;
   @media (min-width: 768px) {
     flex-direction: row;
     padding: 0 39px;
+  }
+  @media (min-width: 768px) {
+    padding: 0 39px;
+  }
+  @media (min-width: 1440px) {
+    padding: 0 165px;
+    margin-bottom: 56px;
   }
 `;
 const Rotation = styled.div`
@@ -301,6 +347,9 @@ const Rotation = styled.div`
     align-items: flex-start;
     min-width: 24%;
   }
+  @media (min-width: 1440px) {
+    padding: 20px 23px 27px;
+  }
 `;
 
 const PropertyName = styled.span`
@@ -314,6 +363,11 @@ const PropertyName = styled.span`
   color: rgb(255, 255, 255, 0.5);
   @media (min-width: 768px) {
   }
+  @media (min-width: 1440px) {
+    font-size: 11px;
+    line-height: 25px;
+    letter-spacing: 1px;
+  }
 `;
 const PropertySize = styled.span`
   font-weight: 400;
@@ -325,6 +379,10 @@ const PropertySize = styled.span`
   @media (min-width: 768px) {
     font-size: 24px;
     line-height: 31px;
+  }
+  @media (min-width: 1440px) {
+    font-size: 40px;
+    line-height: 52px;
   }
 `;
 
@@ -339,6 +397,9 @@ const Revolution = styled.div`
     align-items: flex-start;
     min-width: 24%;
   }
+  @media (min-width: 1440px) {
+    padding: 20px 23px 27px;
+  }
 `;
 const Radius = styled.div`
   display: flex;
@@ -352,6 +413,9 @@ const Radius = styled.div`
     align-items: flex-start;
     min-width: 24%;
   }
+  @media (min-width: 1440px) {
+    padding: 20px 23px 27px;
+  }
 `;
 const Temperature = styled.div`
   display: flex;
@@ -364,6 +428,9 @@ const Temperature = styled.div`
     flex-direction: column;
     align-items: flex-start;
     min-width: 24%;
+  }
+  @media (min-width: 1440px) {
+    padding: 20px 23px 27px;
   }
 `;
 
