@@ -31,8 +31,7 @@ ${(props) => props.fonts}
     box-sizing: border-box;
 }
 body{
-    width: 100vw;
-    //height: 100vh;
+    max-width: 100vw;
     font-family: 'Antonio';
     color: var(--pWhite);
     background-color: var(--dark);
